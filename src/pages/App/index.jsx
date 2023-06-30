@@ -7,6 +7,9 @@ import MyOrder from '../MyOrder/index.jsx';
 import MyOrders from '../MyOrders/index.jsx';
 import NotFound from '../NotFound/index.jsx';
 import SignIn from '../SignIn/index.jsx';
+// components
+import NavBar from '../../components/NavBar/index.jsx';
+// styles
 import './App.css';
 
 // creating app routes
@@ -28,6 +31,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <AppRoutes/>
+      <NavBar />
     </BrowserRouter>
   )
 }

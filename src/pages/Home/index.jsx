@@ -1,11 +1,14 @@
-import React from 'react';
+// base strcuture
+import Layout from "../../components/layout";
+// card component
+import Card from "../../components/Card";
 
 // home component
 const Home = () => {
     return (
-        <div>
-            Home
-        </div>
+        <Layout>
+            <Card />
+        </Layout>
     );
 }
 

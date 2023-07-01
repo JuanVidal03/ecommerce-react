@@ -1,10 +1,10 @@
-import React from 'react';
+import Layout from "../../components/layout";
 
 const NotFound = () => {
     return (
-        <div>
-            NotFound
-        </div>
+        <Layout>
+            Not Found
+        </Layout>
     );
 }
 

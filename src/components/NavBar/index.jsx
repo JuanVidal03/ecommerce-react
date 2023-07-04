@@ -1,11 +1,18 @@
+// react hooks
+import { useContext } from "react";
+// react router dom
 import { NavLink } from "react-router-dom";
+// import cart context
+import { ShoppingCartContext } from "../../Context";
 
 const NavBar = () => {
+    // cart counter context
+    const cartContext = useContext(ShoppingCartContext);
     // what page is active
     const activeStyle = 'underline underline-offset-4';
 
     return (
-        <nav className="flex justify-between items-center fixed z-10 w-full py-4 px-10 font-light text-lg bg-zinc-800 top-0">
+        <nav className="flex justify-between items-center fixed z-50 w-full py-4 px-10 font-light text-lg bg-zinc-800 top-0 shadow-lg">
             {/* Left sideBar */}
             <ul className="flex justify-center items-center gap-3">
                 <li className="font-bold text-2xl text-white">
@@ -104,7 +111,7 @@ const NavBar = () => {
                     </NavLink>
                 </li>
                 <li className="text-white">
-                   🛒 0
+                   🛒 {cartContext.cartCounter}
                 </li>
             </ul>
         </nav>

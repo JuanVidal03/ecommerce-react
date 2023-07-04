@@ -7,6 +7,7 @@ import MyOrder from '../MyOrder/index.jsx';
 import MyOrders from '../MyOrders/index.jsx';
 import NotFound from '../NotFound/index.jsx';
 import SignIn from '../SignIn/index.jsx';
+import ShoppingCartProvider from '../../Context/index.jsx';
 // components
 import NavBar from '../../components/NavBar/index.jsx';
 // styles
@@ -29,10 +30,13 @@ const AppRoutes = () => {
 // principal conponent
 const App = () => {
   return (
-    <BrowserRouter>
-      <AppRoutes/>
-      <NavBar/>
-    </BrowserRouter>
+    // context app
+    <ShoppingCartProvider>
+      <BrowserRouter>
+        <AppRoutes/>
+        <NavBar/>
+      </BrowserRouter>
+    </ShoppingCartProvider>
   )
 }
 

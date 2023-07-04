@@ -7,7 +7,7 @@ import Card from "../../components/Card";
 
 // home component
 const Home = () => {
-    
+
     const [items, setItems] = useState(null);
 
     // getting all items

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Layout from "../../components/layout";
 // card component
 import Card from "../../components/Card";
+import ProductDetail from '../../components/ProductDetail/index.jsx';
 
 // home component
 const Home = () => {
@@ -27,6 +28,7 @@ const Home = () => {
                 })
             }
             </div>
+            <ProductDetail/>
         </Layout>
     );
 }

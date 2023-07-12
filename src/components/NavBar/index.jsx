@@ -1,3 +1,4 @@
+import { ShoppingCartIcon } from '@heroicons/react/24/solid';
 // react hooks
 import { useContext } from "react";
 // react router dom
@@ -110,8 +111,11 @@ const NavBar = () => {
                         Sign In
                     </NavLink>
                 </li>
-                <li className="text-white">
-                   🛒 {cartContext.cartCounter}
+                <li className="text-white flex gap-1 items-center justify-center">
+                    <ShoppingCartIcon className='h-6 w-6 text-white font-bold' />
+                    <div>
+                    {cartContext.cartCounter}
+                    </div>
                 </li>
             </ul>
         </nav>

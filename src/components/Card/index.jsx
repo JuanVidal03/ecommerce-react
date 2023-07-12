@@ -1,3 +1,5 @@
+// Icons
+import { PlusIcon } from '@heroicons/react/24/solid';
 // use context hook to global context app
 import { useContext } from "react";
 // created context
@@ -16,7 +18,9 @@ const Card = ({category, productImg, productName, productPrice }) => {
                 onClick={() => {
                     // increment count form context.jsx
                     context.setCartCounter(context.cartCounter + 1)
-                }}>+</div>
+                }}>
+                    <PlusIcon className="h-5 w-5 text-black font-bold"/>
+                </div>
             </figure>
             <p className="px-3 flex justify-between items-center">
                 <span className="text-sm">{productName}</span>

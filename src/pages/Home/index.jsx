@@ -24,7 +24,7 @@ const Home = () => {
             <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg mt-16">
             {
                 items?.map(item => {
-                    return <Card key={item.id} category={item.category.name} productImg={item.images[0]} productName={item.title} productPrice={item.price} />
+                    return <Card key={item.id} category={item.category.name} productImg={item.images[0]} productName={item.title} productPrice={item.price} description={item.description}/>
                 })
             }
             </div>

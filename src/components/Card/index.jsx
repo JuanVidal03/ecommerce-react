@@ -5,12 +5,32 @@ import { useContext } from "react";
 // created context
 import { ShoppingCartContext } from "../../Context";
 
-const Card = ({category, productImg, productName, productPrice }) => {
+const Card = ({category, productImg, productName, productPrice, description }) => {
     // saving the context
     const context = useContext(ShoppingCartContext);
 
+    // sending product Scheman to product Detail component
+    const product = {
+        category: category,
+        productImg: productImg,
+        productName: productName,
+        productPrice: productPrice,
+        description: description
+    }
+
+    // storing the product to show it in product detail
+    const showProduct = (productDetail) => {
+        // open product detail aside
+        context.openProductDetail();
+        // updating product to show
+        context.setProductToShow(productDetail);
+    }
+
     return (
-        <div className="border transition-all border-gray-500 bg-whitem rounded-t-lg cursor-pointer w-56 h-72 overflow-hidden hover:-translate-y-2 hover:shadow-lg">
+        <div
+            className="border transition-all border-gray-500 bg-whitem rounded-t-lg cursor-pointer w-56 h-72 overflow-hidden hover:-translate-y-2 hover:shadow-lg"
+            onClick={() => showProduct(product)}
+        >
             <figure className="relative mb-4 w-full h-4/5 overflow-hidden">
                 <span className="absolute bottom-2 left-2 bg-zinc-800 px-3 text-white text-sm py-1 rounded-full z-50">{category}</span>
                 <img src={productImg} alt="" className="absolute w-full h-full object-cover transition scale scale-110 hover:scale-100"/>

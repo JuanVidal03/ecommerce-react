@@ -3,3 +3,19 @@
     height: calc(100vh - 64px);
     top: 64px;
 }
+
+
+.scroll-bar{
+    overflow-y: scroll;
+}
+
+.scroll-bar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.scroll-bar::-webkit-scrollbar-track {
+    background: #3F3F46;
+}
+.scroll-bar::-webkit-scrollbar-thumb {
+    background: #fff;
+}

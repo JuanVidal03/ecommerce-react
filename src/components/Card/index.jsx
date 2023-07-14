@@ -5,7 +5,7 @@ import { useContext } from "react";
 // created context
 import { ShoppingCartContext } from "../../Context";
 
-const Card = ({category, productImg, productName, productPrice, description }) => {
+const Card = ({id, category, productImg, productName, productPrice, description }) => {
     // saving the context
     const context = useContext(ShoppingCartContext);
 
@@ -15,7 +15,8 @@ const Card = ({category, productImg, productName, productPrice, description }) =
         productImg: productImg,
         productName: productName,
         productPrice: productPrice,
-        description: description
+        description: description,
+        id: id
     }
 
     // storing the product to show it in product detail
@@ -32,7 +33,7 @@ const Card = ({category, productImg, productName, productPrice, description }) =
     const addProductsToCart = (event, productToCart) => {
         event.stopPropagation();
 
-        // add to cart a nre product without delete the las one
+        // add to cart a nre product without delete the last one
         context.setCartProducts([...context.cartProducts, productToCart]);
         // increment the cart copunter
         context.setCartCounter(context.cartCounter + 1);

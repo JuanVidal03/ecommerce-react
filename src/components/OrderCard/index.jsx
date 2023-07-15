@@ -14,7 +14,7 @@ const OrderCard = ({ id, img, name, price }) => {
                 <p className='text-sm font-light text-gray-400'>${price} USD</p>
             </div>
             <div className='flex items-center justify-center'>
-                <XMarkIcon className="h-6 w-6 text-white font-bold rounded-2xl p-1 bg-red-600" />
+                <XMarkIcon className="h-6 w-6 text-white font-bold rounded-2xl p-1 bg-red-600 cursor-pointer" />
             </div>
         </div>
     );

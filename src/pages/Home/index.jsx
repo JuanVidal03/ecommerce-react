@@ -21,7 +21,7 @@ const Home = () => {
 
     return (
         <Layout>
-            Home
+            <h1 className="font-extrabold text-4xl text-zinc-800 uppercase">These are all our fantastic products!</h1>
             <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg mt-16">
             {
                 items?.map(item => {

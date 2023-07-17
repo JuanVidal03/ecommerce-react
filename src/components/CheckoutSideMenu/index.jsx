@@ -13,6 +13,12 @@ const CheckoutSideMenu = () => {
     // context to open or close the sidebar
     const context = useContext(ShoppingCartContext);
 
+    // delete product
+    const handleDelete = idProduct => {
+        const filteredProducts = context.cartProducts.filter(product => product.id != idProduct);
+        context.setCartProducts(filteredProducts); // updating cart
+    }
+
     return (
         <aside
             className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} checkout-side-menu flex-col fixed right-0 bg-zinc-700 border-l-white z-50 p-6`}
@@ -28,10 +34,23 @@ const CheckoutSideMenu = () => {
             </div>
             <div className='flex flex-col gap-4 scroll-bar pr-3'>
                 {
-                    // showing the elements inside the cart array
-                    context.cartProducts.map(product => {
-                        return <OrderCard key={product.id} img={product.productImg} name={product.productName} price={product.productPrice}/>
-                    })
+                    // verifing if there is an element inside the cart
+                    context.cartProducts.length > 0 ? (
+                        // showing the elements inside the cart array
+                        context.cartProducts.map(product => (
+                            <OrderCard
+                            key={product.id}
+                            id={product.id}
+                            img={product.productImg}
+                            name={product.productName}
+                            price={product.productPrice}
+                            handleDelete={handleDelete}
+                            />
+                        ))
+                    ) : (
+                        <h5 className='text-white font-bold flex justify-center items-center'>There's no products to show :(</h5>
+                    )
+                    
                 }
             </div>
         </aside>

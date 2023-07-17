@@ -8,6 +8,8 @@ import { ShoppingCartContext } from "../../Context";
 import './styles.css';
 // order card component
 import OrderCard from '../OrderCard';
+// total price function
+import { totalPrice } from '../../utils/totalPrice';
 
 const CheckoutSideMenu = () => {
     // context to open or close the sidebar
@@ -52,6 +54,10 @@ const CheckoutSideMenu = () => {
                     )
                     
                 }
+            </div>
+            <div className='mt-5 p-3 bg-white rounded-lg flex justify-between items-center'>
+                <h6 className='font-bold'>Total price:</h6>
+                <span className='text-green-500 font-bold text-2xl'>${totalPrice(context.cartProducts)} USD</span>
             </div>
         </aside>
     );

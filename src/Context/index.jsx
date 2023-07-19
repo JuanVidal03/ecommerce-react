@@ -23,8 +23,11 @@ const ShoppingCartProvider = ({children}) => {
     // showing product detail
     const [productToShow, setProductToShow] = useState({});
 
-    // add product ti cart
+    // add product to cart
     const [cartProducts, setCartProducts] = useState([]);
+
+    // creating a single order
+    const [order, setOrder] = useState([]);
 
     return (
         // values that will comunicate with card component
@@ -41,6 +44,8 @@ const ShoppingCartProvider = ({children}) => {
             openCheckoutSideMenu,
             closeCheckoutSideMenu,
             isCheckoutSideMenuOpen,
+            order,
+            setOrder,
         }}>
             {children}
         </ShoppingCartContext.Provider>

@@ -2,6 +2,8 @@
 import { XMarkIcon } from '@heroicons/react/24/solid';
 // react hooks
 import { useContext } from 'react';
+// react router dom
+import { Link } from 'react-router-dom';
 // shopping cart cart context context
 import { ShoppingCartContext } from "../../Context";
 // product detail styles
@@ -23,6 +25,7 @@ const CheckoutSideMenu = () => {
 
     // create an order 
     const handleCheckout = () => {
+        // checkout schema
         const orderToAdd = {
             date: new Date().toLocaleTimeString(),
             products: context.cartProducts,
@@ -32,6 +35,7 @@ const CheckoutSideMenu = () => {
 
         // adding new order
         context.setOrder([...context.order, orderToAdd]);
+        // cleaning cart product array
         context.setCartProducts([]);
     }
 
@@ -79,10 +83,12 @@ const CheckoutSideMenu = () => {
                     <h6 className='font-bold'>Total price:</h6>
                     <span className='text-green-500 font-bold text-2xl'>${totalPrice(context.cartProducts)} USD</span>
                 </div>
-                <button
-                    className='w-full transition-all p-3 text-center rounded bg-green-600 uppercase text-white font-bold hover:scale-105'
-                    onClick={() => handleCheckout()}
-                >Checkout</button>
+                <Link className='w-full' to='/my-order/last'>
+                    <button
+                        className='w-full transition-all p-3 text-center rounded bg-green-600 uppercase text-white font-bold hover:scale-105'
+                        onClick={() => handleCheckout()}
+                    >Checkout</button>
+                </Link>
             </div>
         </aside>
     );

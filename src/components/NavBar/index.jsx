@@ -111,10 +111,13 @@ const NavBar = () => {
                         Sign In
                     </NavLink>
                 </li>
-                <li className="text-white flex gap-1 items-center justify-center cursor-pointer">
+                <li
+                    className={`${cartContext.isCheckoutSideMenuOpen ? 'block': 'hidden'}text-white flex gap-1 items-center justify-center cursor-pointer`}
+                    onClick={() => cartContext.openCheckoutSideMenu()}
+                >
                     <ShoppingCartIcon className='h-6 w-6 text-white font-bold' />
-                    <div>
-                    {cartContext.cartProducts.length}
+                    <div className='text-white'>
+                        {cartContext.cartProducts.length}
                     </div>
                 </li>
             </ul>

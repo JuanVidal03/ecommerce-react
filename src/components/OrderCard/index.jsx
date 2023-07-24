@@ -4,7 +4,7 @@ import { XMarkIcon } from '@heroicons/react/24/solid';
 const OrderCard = ({ id, img, name, price, handleDelete }) => {
 
     // rendering handelcheckout
-    let renderXMarkIcon
+    let renderXMarkIcon;
 
     if (handleDelete) {
         renderXMarkIcon = (

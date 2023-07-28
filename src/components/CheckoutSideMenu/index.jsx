@@ -37,6 +37,8 @@ const CheckoutSideMenu = () => {
         context.setOrder([...context.order, orderToAdd]);
         // cleaning cart product array
         context.setCartProducts([]);
+        // closing checkout side menu
+        context.closeCheckoutSideMenu();
     }
 
     return (

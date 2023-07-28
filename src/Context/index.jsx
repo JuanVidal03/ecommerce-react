@@ -1,5 +1,5 @@
 // react hooks
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const ShoppingCartContext = createContext();
 
@@ -29,6 +29,28 @@ const ShoppingCartProvider = ({children}) => {
     // creating a single order
     const [order, setOrder] = useState([]);
 
+    // get all products
+    const [items, setItems] = useState(null);
+    // filtered items
+    const [filteredItems, setFilteredItems] = useState(null);
+    // search category
+    const [searchCategory, setSearchCategory] = useState(null);
+
+    const filteredItemsByTitle = (items, searchCategory) => {
+        return items?.filter(item => item.title.toLowerCase().includes(searchCategory.toLowerCase()));
+    }
+
+    useEffect(() => {
+        if(searchCategory) setFilteredItems(filteredItemsByTitle(items, searchCategory))
+    }, [items, searchCategory]);
+
+    // getting all items
+    useEffect(() => {
+        fetch('https://api.escuelajs.co/api/v1/products')
+            .then(res => res.json())
+            .then(data => setItems(data))
+    }, []);
+
     return (
         // values that will comunicate with card component
         <ShoppingCartContext.Provider value={{
@@ -46,6 +68,11 @@ const ShoppingCartProvider = ({children}) => {
             isCheckoutSideMenuOpen,
             order,
             setOrder,
+            items,
+            setItems,
+            searchCategory,
+            setSearchCategory,
+            filteredItems
         }}>
             {children}
         </ShoppingCartContext.Provider>

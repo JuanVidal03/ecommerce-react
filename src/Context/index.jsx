@@ -33,7 +33,7 @@ const ShoppingCartProvider = ({children}) => {
     const [items, setItems] = useState(null);
     // filtered items
     const [filteredItems, setFilteredItems] = useState(null);
-    // search category
+    // search by title
     const [searchCategory, setSearchCategory] = useState(null);
 
     const filteredItemsByTitle = (items, searchCategory) => {
@@ -50,6 +50,48 @@ const ShoppingCartProvider = ({children}) => {
             .then(res => res.json())
             .then(data => setItems(data))
     }, []);
+
+    // filter by category
+    const [ searchByCategory,setSearchByCategory] = useState('');
+
+    const filteredItemsByCategory = (items, searchCategory) => {
+        return items?.filter(item => item.category.name.toLowerCase().includes(searchCategory.toLowerCase()));
+    }
+    
+    // filtering by category or title or both
+    const filterByType = (typeSearch, items, searchCategory, searchByCategory) => {
+        if(typeSearch === 'BY_TITLE'){
+            return filteredItemsByTitle(items, searchCategory);
+        }
+
+        if(typeSearch === 'BY_CATEGORY'){
+            return filteredItemsByCategory(items, searchByCategory);
+        }
+
+        if(typeSearch === 'BY_TITLE_AND_CATEGORY'){
+            return filteredItemsByCategory(items, searchByCategory).filter(item => item.title.toLowerCase().includes(searchCategory.toLowerCase()));
+        }
+
+        if(!typeSearch){
+            return items;
+        }
+    }
+
+    useEffect(() => {
+
+            // by title and category
+        if(searchCategory && searchByCategory) setFilteredItems(filterByType('BY_TITLE_AND_CATEGORY', items, searchCategory, searchByCategory));
+
+            // by title
+        if(searchCategory && !searchByCategory) setFilteredItems(filterByType('BY_TITLE', items, searchCategory, searchByCategory));
+
+            // by category
+        if(searchByCategory && !searchCategory) setFilteredItems(filterByType('BY_CATEGORY',items, searchCategory, searchByCategory));
+
+            // by no one of both
+        if(!searchByCategory && !searchCategory) setFilteredItems(filterByType(null,items, searchCategory, searchByCategory));
+
+    }, [items, searchCategory, searchByCategory]);
 
     return (
         // values that will comunicate with card component
@@ -72,7 +114,9 @@ const ShoppingCartProvider = ({children}) => {
             setItems,
             searchCategory,
             setSearchCategory,
-            filteredItems
+            filteredItems,
+            searchByCategory,
+            setSearchByCategory
         }}>
             {children}
         </ShoppingCartContext.Provider>

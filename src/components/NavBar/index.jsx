@@ -19,6 +19,7 @@ const NavBar = () => {
                 <li className="font-bold text-2xl text-white">
                     <NavLink
                     to='/'
+                    onClick={() => cartContext.setSearchByCategory()}
                     >
                         OpenMind
                     </NavLink>
@@ -26,6 +27,7 @@ const NavBar = () => {
                 <li className="text-white">
                     <NavLink
                     to='/'
+                    onClick={() => cartContext.setSearchByCategory()}
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
                     }>
@@ -35,6 +37,7 @@ const NavBar = () => {
                 <li className="text-white">
                     <NavLink
                     to='/clothes'
+                    onClick={() => cartContext.setSearchByCategory('clothes')}
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
                     }>
@@ -44,6 +47,7 @@ const NavBar = () => {
                 <li className="text-white">
                     <NavLink
                     to='/electronics'
+                    onClick={() => cartContext.setSearchByCategory('electronics')}
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
                     }>
@@ -53,6 +57,7 @@ const NavBar = () => {
                 <li className="text-white">
                     <NavLink
                     to='/furnitures'
+                    onClick={() => cartContext.setSearchByCategory('furnitures')}
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
                     }>
@@ -62,6 +67,7 @@ const NavBar = () => {
                 <li className="text-white">
                     <NavLink
                     to='/toys'
+                    onClick={() => cartContext.setSearchByCategory('toys')}
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
                     }>
@@ -71,7 +77,7 @@ const NavBar = () => {
                 <li className="text-white">
                     <NavLink
                     to='/others'
-                    
+                    onClick={() => cartContext.setSearchByCategory('others')}
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
                     }>

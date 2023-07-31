@@ -16,25 +16,17 @@ const Home = () => {
 
     // render view depend the filter
     const renderView = () => {
-        if(context.searchCategory?.length > 0){
+        if(context.filteredItems?.length > 0){
 
-            if (context.filteredItems?.length > 0 ) {
-                return (
-                    context.filteredItems?.map(item => {
-                        return <Card key={item.id} id={item.id} category={item.category.name} productImg={item.images[0]} productName={item.title} productPrice={item.price} description={item.description}/>
-                    })
-                )
-            } else {
-                return (
-                    <h3>There's not anything with that name :(</h3>
-                )
-            }
-            
-        } else {
-            return(
-                context.items?.map(item => {
+            return (
+                context.filteredItems?.map(item => {
                     return <Card key={item.id} id={item.id} category={item.category.name} productImg={item.images[0]} productName={item.title} productPrice={item.price} description={item.description}/>
                 })
+            )
+            
+        } else {
+            return (
+                <h3>There's not anything with that name :(</h3>
             )
         }
     }

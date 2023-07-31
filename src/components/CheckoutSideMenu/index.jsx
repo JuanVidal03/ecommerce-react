@@ -39,6 +39,8 @@ const CheckoutSideMenu = () => {
         context.setCartProducts([]);
         // closing checkout side menu
         context.closeCheckoutSideMenu();
+        // deleting input value
+        context.setSearchCategory(null)
     }
 
     return (
